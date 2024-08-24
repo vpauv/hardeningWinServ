@@ -403,21 +403,6 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             Identity = 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
         }
 
-	# CceId: 2.2.9
-        # DataSource: Security Policy
-        # Ensure '(L1) Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators' (DC only) 
-        UserRightsAssignment  AllowlogonthroughRemoteDesktopServices {
-            Policy   = 'Allow_log_on_through_Remote_Desktop_Services'
-            Identity = 'Administrators'
-        }
-
-	# CceId: 2.2.11
-        # DataSource: Security Policy
-        # Ensure '(L1) Ensure 'Back up files and directories' is set to 'Administrators' (Automated)  
-        UserRightsAssignment  Backupfilesanddirectories {
-            Policy   = 'Back_up_files_and_directories'
-            Identity = 'Administrators'
-        }
 
 	# CceId: 2.2.20
         # DataSource: Security Policy
