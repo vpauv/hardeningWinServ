@@ -703,17 +703,17 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
 	# CceId: CCE-37615-2 - 2.3.1.1
         # DataSource: Registry Policy
         # Ensure (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts' 
-        Accounts_Block_Microsoft_accounts                                       = 'Users cant add or log on with Microsoft accounts'
+        Accounts_Block_Microsoft_accounts                               = 'Users cant add or log on with Microsoft accounts'
 
 	# CceId: CCE-37615-2 - 2.3.1.4
         # DataSource: Registry Policy
         # (L1) Configure 'Accounts: Rename administrator account' 
-        #Accounts_Rename_administrator_account                                       
+        Accounts_Rename_administrator_account                     =  'Principal'                                 
 
 	# CceId: CCE-37615-2 - 2.3.1.4
         # DataSource: Registry Policy
         # (L1) Configure 'Accounts: Rename guest account' 
-        #Accounts_Rename_guest_account                                       
+        Accounts_Rename_guest_account                              = 'Temporal'       
 	
 
         # CceId: CCE-37615-2
@@ -805,12 +805,12 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
 	# CceId: 2.3.5.1
         # DataSource: Registry Policy
         # (L1) Ensure 'Domain controller: Allow vulnerable Netlogon secure channel connections' is set to 'Not Configured' (DC Only)
-        Domain_controller_Allow_vulnerable_Netlogon_secure_channel_connections                                   = 'Not Configured'
+        #Domain_controller_Allow_vulnerable_Netlogon_secure_channel_connections                                   = 'Not Configured'
 
 	# CceId: 2.3.5.3
         # DataSource: Registry Policy
         #  (L1) Ensure 'Domain controller: LDAP server channel binding token requirements' is set to 'Always' (DC Only) 
-        Domain_controller_LDAP_server_channel_binding_token_requirements                                   = 'Always'
+        #Domain_controller_LDAP_server_channel_binding_token_requirements                                   = 'Always'
 
  	# CceId: 2.3.5.4
         # DataSource: Registry Policy
@@ -825,12 +825,12 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
 	# CceId: 2.3.6.1
         # DataSource: Registry Policy
         # Ensure 'Domain member: Digitally encrypt or sign secure channel data (always)' is set to 'Enabled' 
-        Domain_member_Digitally_encrypt_or_sign_secure_channel_data_(always)                  = 'Enabled'
+        Domain_member_Digitally_encrypt_or_sign_secure_channel_data_always                 = 'Enabled'
 
 	# CceId: 2.3.6.2
         # DataSource: Registry Policy
         # (L1) Ensure 'Domain member: Digitally encrypt secure channel data (when possible)' is set to 'Enabled' 
-        Domain_member_Digitally_encrypt_secure_channel_data_(when possible)                  = 'Enabled'
+        Domain_member_Digitally_encrypt_secure_channel_data_when_possible                  = 'Enabled'
 
 
         # CceId: CCE-38341-4
