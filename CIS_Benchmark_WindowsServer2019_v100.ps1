@@ -315,12 +315,12 @@ CONTROLLERS'
             Identity = 'Administrators, NT VIRTUAL MACHINE\Virtual Machines'
         }
 
-        # CceId: CCE-37659-0
+        # CceId: CCE-37659-0 - 2.2.7
         # DataSource: Security Policy
         # Ensure 'Allow log on locally' is set to 'Administrators'
         UserRightsAssignment Allowlogonlocally {
             Policy   = 'Allow_log_on_locally'
-            Identity = 'Administrators' 
+            Identity = 'Administrators, ENTERPRISE DOMAIN CONTROLLERS' 
         }
 
         # CceId: CCE-37639-2
@@ -339,7 +339,7 @@ CONTROLLERS'
             Identity = 'Guests'
         }
 
-        # CceId: CCE-37452-0
+        # CceId: CCE-37452-0 - 2.2.12
         # DataSource: Security Policy
         # Ensure 'Change the system time' is set to 'Administrators, LOCAL SERVICE'
         UserRightsAssignment Changethesystemtime {
@@ -387,6 +387,55 @@ CONTROLLERS'
             Policy   = 'Allow_log_on_through_Remote_Desktop_Services'
             Identity = 'Administrators'
         }
+
+  	# CceId: 2.2.5
+        # DataSource: Security Policy
+        # Ensure 'L1) Ensure 'Add workstations to domain' is set to 'Administrators' (DC only) 
+        UserRightsAssignment  Addworkstationstodomain {
+            Policy   = 'Add_workstations_to_domain'
+            Identity = 'Administrators'
+        }
+
+ 	# CceId: 2.2.6
+        # DataSource: Security Policy
+        # Ensure 'L1) Ensure 'Add workstations to domain' is set to 'Administrators' (DC only) 
+        UserRightsAssignment  Adjustmemoryquotasforaprocess {
+            Policy   = 'Adjust_memory_quotas_for_a_process'
+            Identity = 'Administrators, LOCAL SERVICE, NETWORK SERVICE'
+        }
+
+	# CceId: 2.2.9
+        # DataSource: Security Policy
+        # Ensure '(L1) Ensure 'Allow log on through Remote Desktop Services' is set to 'Administrators' (DC only) 
+        UserRightsAssignment  AllowlogonthroughRemoteDesktopServices {
+            Policy   = 'Allow_log_on_through_Remote_Desktop_Services'
+            Identity = 'Administrators'
+        }
+
+	# CceId: 2.2.11
+        # DataSource: Security Policy
+        # Ensure '(L1) Ensure 'Back up files and directories' is set to 'Administrators' (Automated)  
+        UserRightsAssignment  Backupfilesanddirectories {
+            Policy   = 'Back_up_files_and_directories'
+            Identity = 'Administrators'
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         # CceId: 
         # DataSource: Audit Policy
