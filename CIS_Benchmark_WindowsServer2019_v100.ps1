@@ -798,6 +798,51 @@ CONTROLLERS'
         # Ensure 'Devices: Prevent users from installing printer drivers' is set to 'Enabled'
         Devices_Prevent_users_from_installing_printer_drivers                                                           = 'Enabled'
 
+
+	# CceId: 2.3.5.1
+        # DataSource: Registry Policy
+        #  (L1) Ensure 'Domain controller: Allow server operators to schedule tasks' is set to 'Disabled' (DC only)
+        Domain_controller_Allow_server_operators_to_schedule_tasks                                                   = 'Disabled'
+
+
+	# CceId: 2.3.5.1
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Domain controller: Allow vulnerable Netlogon secure channel connections' is set to 'Not Configured' (DC Only)
+        Domain_controller_Allow_vulnerable_Netlogon_secure_channel_connections                                   = 'Not Configured'
+
+	# CceId: 2.3.5.3
+        # DataSource: Registry Policy
+        #  (L1) Ensure 'Domain controller: LDAP server channel binding token requirements' is set to 'Always' (DC Only) 
+        Domain_controller_LDAP_server_channel_binding_token_requirements                                   = 'Always'
+
+ 	# CceId: 2.3.5.4
+        # DataSource: Registry Policy
+        #  (L1) Ensure 'Domain controller: LDAP server signing requirements' is set to 'Require signing' (DC only) 
+        Domain_controller_LDAP_server_signing_requirements                                   = 'Require signing'
+
+ 	# CceId: 2.3.5.5
+        # DataSource: Registry Policy
+        #  (L1) Ensure 'Domain controller: Refuse machine account password changes' is set to 'Disabled' (DC only) 
+        Domain_controller_Refuse_machine_account_password_changes                             = 'Disabled'
+
+	# CceId: 2.3.6.1
+        # DataSource: Registry Policy
+        # Ensure 'Domain member: Digitally encrypt or sign secure channel data (always)' is set to 'Enabled' 
+        Domain_member_Digitally_encrypt_or_sign_secure_channel_data_(always)                  = 'Enabled'
+
+	# CceId: 2.3.6.2
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Domain member: Digitally encrypt secure channel data (when possible)' is set to 'Enabled' 
+        Domain_member_Digitally_encrypt_secure_channel_data_(when possible)                  = 'Enabled'
+
+
+
+
+
+
+
+
+
         # CceId: CCE-38341-4
         # DataSource: Registry Policy
         # Ensure 'Network security: Allow Local System to use computer identity for NTLM' is set to 'Enabled' 
@@ -823,11 +868,6 @@ CONTROLLERS'
         # Ensure 'Microsoft network server: Amount of idle time required before suspending session' is set to '15 or fewer minute, but not 0'
         Microsoft_network_server_Amount_of_idle_time_required_before_suspending_session = '15'
 
-
-        # CceId: 
-        # DataSource: Registry Policy
-        # Ensure 'Devices: Allow undock without having to log on' is set to 'Enabled'
-        # Devices_Allow_undock_without_having_to_log_on                                                = 'Disabled'
 
         # CceId: CCE-37701-0
         # DataSource: Registry Policy
