@@ -105,7 +105,7 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             Identity = 'Administrators'
         }
 
-        # CceId: CCE-37877-8
+        # CceId: CCE-37877-8 - 2.2.30
         # DataSource: Security Policy
         # Ensure 'Force shutdown from a remote system' is set to 'Administrators'
         UserRightsAssignment Forceshutdownfromaremotesystem {
@@ -121,7 +121,7 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             Identity = 'Administrators'
         }
 
-        # CceId: CCE-37613-7
+        # CceId: CCE-37613-7 - 2.2.46
         # DataSource: Security Policy
         #  Ensure 'Restore files and directories' is set to 'Administrators'
         UserRightsAssignment Restorefilesanddirectories {
@@ -202,7 +202,7 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
 CONTROLLERS'
         }
 
-        # CceId: CCE-36318-4
+        # CceId: CCE-36318-4 - 2.2.35
         # DataSource: Security Policy
         # Ensure 'Load and unload device drivers' is set to 'Administrators'
         UserRightsAssignment Loadandunloaddevicedrivers {
@@ -215,7 +215,7 @@ CONTROLLERS'
         # Ensure 'Deny log on through Remote Desktop Services' is set to 'Guests, Local account'
         UserRightsAssignment DenylogonthroughRemoteDesktopServices {
             Policy   = 'Deny_log_on_through_Remote_Desktop_Services'
-            Identity = 'Guests, Local account'
+            Identity = 'Guests'
         }
 
         # CceId: CCE-36877-9
@@ -228,10 +228,10 @@ CONTROLLERS'
 
         # CceId: CCE-36923-1
         # DataSource: Security Policy
-        # Ensure 'Deny log on as a batch job' to include 'Guests'
+        # Ensure (L2) 'Deny log on as a batch job' to include 'Guests'
         UserRightsAssignment Denylogonasabatchjob {
             Policy   = 'Deny_log_on_as_a_batch_job'
-            Identity = 'Guests'
+            Identity = 'Administrators' 
         }
 
         # CceId: CCE-36532-0
@@ -307,12 +307,12 @@ CONTROLLERS'
             Identity = 'No One'
         }
 
-        # CceId: CCE-35823-4
+        # CceId: CCE-35823-4 - 2.2.18
         # DataSource: Security Policy
         # Ensure 'Create symbolic links' is set to 'Administrators, NT VIRTUAL MACHINE\Virtual Machines' (MS only)
         UserRightsAssignment Createsymboliclinks {
             Policy   = 'Create_symbolic_links'
-            Identity = 'Administrators, NT VIRTUAL MACHINE\Virtual Machines'
+            Identity = 'Administrators'
         }
 
         # CceId: CCE-37659-0 - 2.2.7
@@ -371,12 +371,12 @@ CONTROLLERS'
             Identity = 'Guests'
         }
 
-        # CceId: CCE-38326-5
+        # CceId: CCE-38326-5 - 2.2.34
         # DataSource: Security Policy
         # Ensure 'Increase scheduling priority' is set to 'Administrators, Window Manager\Window Manager Group'
         UserRightsAssignment Increaseschedulingpriority {
             Policy   = 'Increase_scheduling_priority'
-            Identity = 'Administrators'
+            Identity = 'Administrators, Window Manager\Window Manager Group'
         }
 
 
@@ -420,22 +420,23 @@ CONTROLLERS'
             Identity = 'Administrators'
         }
 
+	# CceId: 2.2.20
+        # DataSource: Security Policy
+        # Ensure '(L1) Ensure 'Debug programs' is set to 'Administrators' (Automated)  
+        UserRightsAssignment  Debugprograms {
+            Policy   = 'Debug_programs'
+            Identity = 'Administrators'
+        }
 
+	# CceId: 2.2.20
+        # DataSource: Security Policy
+        # Ensure '(L1) Ensure 'Debug programs' is set to 'Administrators' (Automated)  
+        UserRightsAssignment  Synchronizedirectoryservicedata {
+            Policy   = 'Synchronize_directory_service_data'
+            Identity = 'No One' 
+        }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+######
 
         # CceId: 
         # DataSource: Audit Policy
@@ -550,6 +551,7 @@ CONTROLLERS'
             AuditFlag = 'Failure'
             Ensure    = 'Present'
         }
+	
         # CceId: CCE-36266-5
         # DataSource: Audit Policy
         # Ensure 'Audit Special Logon' is set to 'Success'
@@ -699,6 +701,22 @@ CONTROLLERS'
         # Ensure 'Microsoft network client: Send unencrypted password to third-party SMB servers' is set to 'Disabled' 
         Microsoft_network_client_Send_unencrypted_password_to_third_party_SMB_servers                                   = 'Disabled'
 
+	# CceId: CCE-37615-2 - 2.3.1.1
+        # DataSource: Registry Policy
+        # Ensure (L1) Ensure 'Accounts: Block Microsoft accounts' is set to 'Users can't add or log on with Microsoft accounts' 
+        Accounts_Block_Microsoft_accounts                                       = 'Users cant add or log on with Microsoft accounts'
+
+	# CceId: CCE-37615-2 - 2.3.1.4
+        # DataSource: Registry Policy
+        # (L1) Configure 'Accounts: Rename administrator account' 
+        Accounts_Rename_administrator_account                                       
+
+	# CceId: CCE-37615-2 - 2.3.1.4
+        # DataSource: Registry Policy
+        # (L1) Configure 'Accounts: Rename guest account' 
+        Accounts_Rename_guest_account                                       
+	
+ 
         # CceId: CCE-37615-2
         # DataSource: Registry Policy
         # Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
@@ -708,6 +726,9 @@ CONTROLLERS'
         # DataSource: Registry Policy
         # Ensure 'Shutdown: Allow system to be shut down without having to log on' is set to 'Disabled'
         Shutdown_Allow_system_to_be_shut_down_without_having_to_log_on                                                  = 'Disabled'
+
+
+
 
         # CceId: CCE-36347-3
         # DataSource: Registry Policy
