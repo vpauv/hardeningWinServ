@@ -198,8 +198,7 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
         # Ensure 'Access  this computer from the network' is set to 'Administrators, Authenticated Users' (DC only)
         UserRightsAssignment  Accessthiscomputerfromthenetwork {
             Policy   = 'Access_this_computer_from_the_network'
-            Identity = 'Administrators, Authenticated Users, ENTERPRISE DOMAIN 
-CONTROLLERS'
+            Identity = 'Administrators, Authenticated Users, ENTERPRISE DOMAIN CONTROLLERS'
         }
 
         # CceId: CCE-36318-4 - 2.2.35
@@ -716,7 +715,7 @@ CONTROLLERS'
         # (L1) Configure 'Accounts: Rename guest account' 
         #Accounts_Rename_guest_account                                       
 	
- 
+
         # CceId: CCE-37615-2
         # DataSource: Registry Policy
         # Ensure 'Accounts: Limit local account use of blank passwords to console logon only' is set to 'Enabled'
@@ -726,8 +725,6 @@ CONTROLLERS'
         # DataSource: Registry Policy
         # Ensure 'Shutdown: Allow system to be shut down without having to log on' is set to 'Disabled'
         Shutdown_Allow_system_to_be_shut_down_without_having_to_log_on                                                  = 'Disabled'
-
-
 
 
         # CceId: CCE-36347-3
@@ -834,13 +831,6 @@ CONTROLLERS'
         # DataSource: Registry Policy
         # (L1) Ensure 'Domain member: Digitally encrypt secure channel data (when possible)' is set to 'Enabled' 
         Domain_member_Digitally_encrypt_secure_channel_data_(when possible)                  = 'Enabled'
-
-
-
-
-
-
-
 
 
         # CceId: CCE-38341-4
