@@ -709,12 +709,12 @@ CONTROLLERS'
 	# CceId: CCE-37615-2 - 2.3.1.4
         # DataSource: Registry Policy
         # (L1) Configure 'Accounts: Rename administrator account' 
-        Accounts_Rename_administrator_account                                       
+        #Accounts_Rename_administrator_account                                       
 
 	# CceId: CCE-37615-2 - 2.3.1.4
         # DataSource: Registry Policy
         # (L1) Configure 'Accounts: Rename guest account' 
-        Accounts_Rename_guest_account                                       
+        #Accounts_Rename_guest_account                                       
 	
  
         # CceId: CCE-37615-2
