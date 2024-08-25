@@ -1770,7 +1770,7 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueData = '1'
         }
 
-        # CceId: CCE-37861-2
+        # CceId: CCE-37861-2	
         # DataSource: Registry Policy
         # Ensure 'Windows Firewall: Public: Settings: Apply local firewall rules' is set to 'No'
         <#Registry 'AllowLocalPolicyMerge' {
@@ -1779,8 +1779,7 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueName    = 'AllowLocalPolicyMerge'
             ValueType    = 'DWord'
             ValueData    = '0'
-        }#>
-
+        }#>	
         
 
         # CceId: CCE-38239-0
@@ -1794,16 +1793,61 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueData = '1'
         }
 
-        # CceId: CCE-36268-1
+        # CceId: CCE-36268-1	
         # DataSource: Registry Policy
         # Ensure 'Windows Firewall: Public: Settings: Apply local connection security rules' is set to 'No'
-        <#Registry 'AllowLocalIPsecPolicyMerge' {
+        Registry 'AllowLocalIPsecPolicyMerge' {
             Ensure       = 'Present'
             Key          = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
             ValueName    = 'AllowLocalIPsecPolicyMerge'
             ValueType    = 'DWord'
             ValueData    = '0'
-        }#>
+        }
+
+ 	# CceId: CCE-36546-7	9.3.6
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Public: Logging: Name' is set to '%SystemRoot%\System32\logfiles\firewall\publicfw.log'
+	Registry 'FirewallPublicLoggingName' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging'
+	    ValueName = 'LogFilePath'
+	    ValueType = 'String'
+	    ValueData = '%SystemRoot%\\System32\\logfiles\\firewall\\publicfw.log'
+	}
+	
+	# CceId: CCE-36547-8	9.3.7
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Public: Logging: Size limit (KB)' is set to '16,384 KB or greater'
+	Registry 'FirewallPublicLoggingSizeLimit' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging'
+	    ValueName = 'LogFileSize'
+	    ValueType = 'DWord'
+	    ValueData = '16384'  # 16,384 KB
+	}
+	
+	# CceId: CCE-36548-9	9.3.8
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Public: Logging: Log dropped packets' is set to 'Yes'
+	Registry 'FirewallPublicLoggingDroppedPackets' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging'
+	    ValueName = 'LogDroppedPackets'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' corresponde a 'Yes'
+	}
+	
+	# CceId: CCE-36549-0	9.3.9
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Public: Logging: Log successful connections' is set to 'Yes'
+	Registry 'FirewallPublicLoggingSuccessfulConnections' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile\Logging'
+	    ValueName = 'LogSuccessfulConnections'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' corresponde a 'Yes'
+	}
+
 
         # CceId: CCE-37330-8
         # DataSource: Registry Policy
@@ -2023,6 +2067,17 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueType = 'DWord'
             ValueData = '1'
         }
+
+ 	# CceId: CCE-36545-6	9.3.2
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Public: Inbound connections' is set to 'Block (default)'
+	Registry 'FirewallPublicInboundConnections' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\PublicProfile'
+	    ValueName = 'DefaultInboundAction'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' corresponde a 'Block'
+	}
 
         # CceId: CCE-37434-8 
         # DataSource: Registry Policy
