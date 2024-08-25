@@ -817,6 +817,88 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
         # (L1) Ensure 'Domain member: Digitally encrypt secure channel data (when possible)' is set to 'Enabled' 
         Domain_member_Digitally_encrypt_secure_channel_data_when_possible                  = 'Enabled'
 
+	# CceId: 2.3.6.3
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Domain member: Digitally sign secure channel data (when possible)' is set to 'Enabled' (
+        Domain_member_Digitally_sign_secure_channel_data_when_possible                  = 'Enabled'
+
+
+	# CceId: 2.3.6.4
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Domain member: Disable machine account password changes' is set to 'Disabled' 
+        Domain_member_Disable_machine_account_password_changes                  = 'Disabled'
+
+
+	# CceId: 2.3.6.5
+        # DataSource: Registry Policy
+        #(L1) Ensure 'Domain member: Maximum machine account password age' is set to '30 or fewer days, but not 0' (
+        Domain_member_Maximum_machine_account_password_age                  = '30'
+
+	# CceId: 2.3.6.6
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Domain member: Require strong (Windows 2000 or later) session key' is set to 'Enabled' 
+        Domain_member_Require_strong_Windows_2000_or_later_session_key      = 'Enabled'
+
+	# CceId: 2.3.7.2
+        # DataSource: Registry Policy
+        # L1) Ensure 'Interactive logon: Don't display last signed-in' is set to 'Enabled' 
+        Interactive_logon_Do_not_display_last_user_name                    = 'Enabled'
+
+
+	# CceId: 2.3.7.3
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Interactive logon: Machine inactivity limit' is set to '900 or fewer second(s), but not 0' 
+        Interactive_logon_Machine_inactivity_limit                        = '900'
+
+	# CceId: 2.3.7.4
+        # DataSource: Registry Policy
+        # (L1) Configure 'Interactive logon: Message text for users attempting to log on' (
+        Interactive_logon_Message_text_for_users_attempting_to_log_on      = 'Youre attempting to log on'
+
+	# CceId: 2.3.7.5
+        # DataSource: Registry Policy
+        # (L1) Configure 'Interactive logon: Message title for users attempting to log on' 
+        Interactive_logon_Message_title_for_users_attempting_to_log_on    = 'log on'
+
+	# CceId: 2.3.7.7
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days' 
+        Interactive_logon_Prompt_user_to_change_password_before_expiration      = '6'
+
+	# CceId: 2.3.7.9
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Interactive logon: Prompt user to change password before expiration' is set to 'between 5 and 14 days' 
+        Interactive_logon_Smart_card_removal_behavior          = 'Lock Workstation'
+
+	# CceId: 2.3.10.1
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled' 
+        Network_access_Allow_anonymous_SID_Name_translation       = 'Disabled'
+
+	# CceId: 2.3.10.7
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Network access: Allow anonymous SID/Name translation' is set to 'Disabled' 
+        Network_access_Named_Pipes_that_can_be_accessed_anonymously     = 'LSARPC, NETLOGON, SAMR'
+
+	# CceId: 2.3.10.10
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Network access: Restrict anonymous access to Named Pipes and Shares' is set to 'Enabled' 
+        Network_access_Restrict_anonymous_access_to_Named_Pipes_and_Shares  = 'Enabled'
+
+	# CceId: 2.3.10.12
+        # DataSource: Registry Policy
+        # (L1) Ensure 'Network access: Shares that can be accessed anonymously' is set to 'None' 
+        Network_access_Shares_that_can_be_accessed_anonymously        = 'None'
+
+
+
+
+
+
+	# CceId: 2.3.10.4
+        # DataSource: Registry Policy
+        # (L2) Ensure 'Network access: Do not allow storage of passwords and credentials for network authentication' is set to 'Enabled' 
+        Network_access_Do_not_allow_storage_of_passwords_and_credentials_for_network_authentication  = 'Enabled' 
 
         # CceId: CCE-38341-4
         # DataSource: Registry Policy
