@@ -1936,6 +1936,17 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueData = '1'
         }
 
+ 	# CceId: CCE-36065-1	9.1.2
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Domain: Inbound connections' is set to 'Block (default)'
+	Registry 'InboundConnectionsDomain' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile'
+	    ValueName = 'DefaultInboundAction'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' corresponde a 'Block'
+	}
+
          # CceId: CCE-37809-1
         # DataSource: Registry Policy
         # Ensure 'Turn off Data Execution Prevention for Explorer' is set to 'Disabled'
@@ -2056,6 +2067,50 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueType = 'DWord'
             ValueData = '0'
         }
+
+ 	# CceId: CCE-36536-2	9.1.4
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Domain: Logging: Name' is set to '%SystemRoot%\System32\logfiles\firewall\domainfw.log'
+	Registry 'FirewallDomainLoggingName' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging'
+	    ValueName = 'LogFilePath'
+	    ValueType = 'String'
+	    ValueData = '%SystemRoot%\\System32\\logfiles\\firewall\\domainfw.log'
+	}
+	
+	# CceId: CCE-36537-0	9.1.5
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Domain: Logging: Size limit (KB)' is set to '16,384 KB or greater'
+	Registry 'FirewallDomainLoggingSizeLimit' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging'
+	    ValueName = 'LogFileSize'
+	    ValueType = 'DWord'
+	    ValueData = '16384'  # 16,384 KB
+	}
+	
+	# CceId: CCE-36538-1	9.1.6
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Domain: Logging: Log dropped packets' is set to 'Yes'
+	Registry 'FirewallDomainLoggingDroppedPackets' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging'
+	    ValueName = 'LogDroppedPackets'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' corresponde a 'Yes'
+	}
+	
+	# CceId: CCE-36539-0	9.1.7
+	# DataSource: Registry Policy
+	# Ensure 'Windows Firewall: Domain: Logging: Log successful connections' is set to 'Yes'
+	Registry 'FirewallDomainLoggingSuccessfulConnections' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsFirewall\DomainProfile\Logging'
+	    ValueName = 'LogSuccessfulConnections'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' corresponde a 'Yes'
+	}
 
         # CceId: CCE-37163-3 
         # DataSource: Registry Policy
