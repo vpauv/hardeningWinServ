@@ -1882,6 +1882,15 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueData = '1'
         }
 
+ 	# CceId: CCE-89012-3	5.1
+	# DataSource: Service Configuration
+	# Ensure 'Print Spooler (Spooler)' is set to 'Disabled' (DC only)
+	Service 'Spooler' {
+	    Ensure = 'Absent'
+	    Name   = 'Spooler'
+	    StartMode = 'Disabled'
+	} 
+
         # CceId: CCE-37064-0
         # DataSource: Registry Policy
         # Ensure 'User Account Control: Switch to the secure desktop when prompting for elevation' is set to 'Enabled'
