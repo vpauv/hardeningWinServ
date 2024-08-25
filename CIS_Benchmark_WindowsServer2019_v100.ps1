@@ -2557,7 +2557,601 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             ValueType = 'DWord'
             ValueData = '0'
         }
-
+	
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off Registration if URL connection is referring to Microsoft.com' is set to 'Enabled'
+	Registry 'NoRegistration' {
+   		Ensure    = 'Present'
+    		Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Registration Wizard Control'
+    		ValueName = 'NoRegistration'
+    		ValueType = 'DWord'
+    		ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off Search Companion content file updates' is set to 'Enabled'
+	Registry 'DisableContentFileUpdates' {
+    		Ensure    = 'Present'
+    		Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SearchCompanion'
+    		ValueName = 'DisableContentFileUpdates'
+    		ValueType = 'DWord'
+    		ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off the "Order Prints" picture task' is set to 'Enabled'
+	Registry 'NoOnlinePrintsWizard' {
+    		Ensure    = 'Present'
+    		Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+    		ValueName = 'NoOnlinePrintsWizard'
+    		ValueType = 'DWord'
+    		ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off the "Publish to Web" task for files and folders' is set to 'Enabled'
+	Registry 'NoPublishingWizard' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+	    ValueName = 'NoPublishingWizard'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off the Windows Messenger Customer Experience Improvement Program' is set to 'Enabled'
+	Registry 'CEIP' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Messenger\Client'
+	    ValueName = 'CEIP'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off Windows Customer Experience Improvement Program' is set to 'Enabled'
+	Registry 'CEIPEnable' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SQMClient\Windows'
+	    ValueName = 'CEIPEnable'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off Windows Error Reporting' is set to 'Enabled'
+	# Configure 'Disabled' value in 'Windows Error Reporting'
+	Registry 'Disabled' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting'
+	    ValueName = 'Disabled'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# Configure 'DoReport' value in 'ErrorReporting'
+	Registry 'DoReport' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PCHealth\ErrorReporting'
+	    ValueName = 'DoReport'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Support device authentication using certificate' is set to 'Enabled: Automatic'
+	# Configure 'DevicePKInitBehavior' value to 'Automatic'
+	Registry 'DevicePKInitBehavior' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\kerberos\parameters'
+	    ValueName = 'DevicePKInitBehavior'
+	    ValueType = 'DWord'
+	    ValueData = '2'  # Assuming 'Automatic' corresponds to a value of '2'
+	}
+	# Configure 'DevicePKInitEnabled' value to 'Enabled'
+	Registry 'DevicePKInitEnabled' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\kerberos\parameters'
+	    ValueName = 'DevicePKInitEnabled'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enumeration policy for external devices incompatible with Kernel DMA Protection' is set to 'Enabled: Block All'
+	Registry 'DeviceEnumerationPolicy' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Kernel DMA Protection'
+	    ValueName = 'DeviceEnumerationPolicy'
+	    ValueType = 'DWord'
+	    ValueData = '2'  # Assuming 'Block All' corresponds to a value of '2'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Configure password backup directory' is set to 'Enabled: Active Directory'
+	Registry 'BackupDirectory' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'BackupDirectory'
+	    ValueType = 'String'
+	    ValueData = 'Active Directory'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Do not allow password expiration time longer than required by policy' is set to 'Enabled'
+	Registry 'PwdExpirationProtectionEnabled' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'PwdExpirationProtectionEnabled'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enable password encryption' is set to 'Enabled'
+	Registry 'ADPasswordEncryptionEnabled' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'ADPasswordEncryptionEnabled'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Password Settings: Password Complexity' is set to 'Enabled: Large letters + small letters + numbers + special characters'
+	Registry 'PasswordComplexity' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'PasswordComplexity'
+	    ValueType = 'DWord'
+	    ValueData = '4'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Password Settings: Password Length' is set to 'Enabled: 15 or more'
+	Registry 'PasswordLength' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'PasswordLength'
+	    ValueType = 'DWord'
+	    ValueData = '15'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Password Settings: Password Age (Days)' is set to 'Enabled: 30 or fewer'
+	Registry 'PasswordAgeDays' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'PasswordAgeDays'
+	    ValueType = 'DWord'
+	    ValueData = '30'
+	}
+ 
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Post-authentication actions: Grace period (hours)' is set to 'Enabled: 8 or fewer hours, but not 0'
+	Registry 'PostAuthenticationResetDelay' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'PostAuthenticationResetDelay'
+	    ValueType = 'DWord'
+	    ValueData = '8'  # Set to 8 hours or fewer, but not 0
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Post-authentication actions: Actions' is set to 'Enabled: Reset the password and logoff the managed account' or higher
+	Registry 'PostAuthenticationActions' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\LAPS'
+	    ValueName = 'PostAuthenticationActions'
+	    ValueType = 'DWord'
+	    ValueData = '3'  # Assuming '3-5' corresponds to 'Reset the password and logoff the managed account' or higher
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Disallow copying of user input methods to the system account for sign-in' is set to 'Enabled'
+	Registry 'BlockUserInputMethodsForSignIn' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Control Panel\International'
+	    ValueName = 'BlockUserInputMethodsForSignIn'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Do not enumerate connected users on domain-joined computers' is set to 'Enabled'
+	Registry 'DontEnumerateConnectedUsers' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+	    ValueName = 'DontEnumerateConnectedUsers'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off picture password sign-in' is set to 'Enabled'
+	Registry 'BlockDomainPicturePassword' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+	    ValueName = 'BlockDomainPicturePassword'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow Clipboard synchronization across devices' is set to 'Disabled'
+	Registry 'AllowCrossDeviceClipboard' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+	    ValueName = 'AllowCrossDeviceClipboard'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow upload of User Activities' is set to 'Disabled'
+	Registry 'UploadUserActivities' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\System'
+	    ValueName = 'UploadUserActivities'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	## 18.9.33.6
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow network connectivity during connected-standby (on battery)' is set to 'Disabled'
+	Registry 'DCSettingIndex' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9'
+	    ValueName = 'DCSettingIndex'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow network connectivity during connected-standby (plugged in)' is set to 'Disabled'
+	Registry 'ACSettingIndex' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\f15576e8-98b7-4186-b944-eafa664402d9'
+	    ValueName = 'ACSettingIndex'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Require a password when a computer wakes (on battery)' is set to 'Enabled'
+	Registry 'DCSettingIndex' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
+	    ValueName = 'DCSettingIndex'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Require a password when a computer wakes (plugged in)' is set to 'Enabled'
+	Registry 'ACSettingIndex' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Power\PowerSettings\0e796bdb-100d-47d6-a2d5-f7d2daa51f51'
+	    ValueName = 'ACSettingIndex'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off the advertising ID' is set to 'Enabled'
+	Registry 'DisabledByGroupPolicy' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo'
+	    ValueName = 'DisabledByGroupPolicy'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow a Windows app to share application data between users' is set to 'Disabled'
+	Registry 'AllowSharedLocalAppData' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CurrentVersion\AppModel\StateManager'
+	    ValueName = 'AllowSharedLocalAppData'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow Use of Camera' is set to 'Disabled'
+	Registry 'AllowCamera' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Camera'
+	    ValueName = 'AllowCamera'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off cloud consumer account state content' is set to 'Enabled'
+	Registry 'DisableConsumerAccountStateContent' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'DisableConsumerAccountStateContent'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Require pin for pairing' is set to 'Enabled: First Time' OR 'Enabled: Always'
+	Registry 'RequirePinForPairing' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Connect'
+	    ValueName = 'RequirePinForPairing'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # 1 o 2 para 'Enabled: First Time' o 'Always'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow Diagnostic Data' is set to 'Enabled: Diagnostic data off (not recommended)' or 'Enabled: Send required diagnostic data'
+	Registry 'AllowTelemetry' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+	    ValueName = 'AllowTelemetry'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # 1 para 'Send required diagnostic data', 2 para 'Diagnostic data off (not recommended)'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Configure Authenticated Proxy usage for the Connected User Experience and Telemetry service' is set to 'Enabled: Disable Authenticated Proxy usage'
+	Registry 'DisableEnterpriseAuthProxy' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+	    ValueName = 'DisableEnterpriseAuthProxy'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Disable OneSettings Downloads' is set to 'Enabled'
+	Registry 'DisableOneSettingsDownloads' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+	    ValueName = 'DisableOneSettingsDownloads'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enable OneSettings Auditing' is set to 'Enabled'
+	Registry 'EnableOneSettingsAuditing' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+	    ValueName = 'EnableOneSettingsAuditing'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Limit Diagnostic Log Collection' is set to 'Enabled'
+	Registry 'LimitDiagnosticLogCollection' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+	    ValueName = 'LimitDiagnosticLogCollection'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Limit Dump Collection' is set to 'Enabled'
+	Registry 'LimitDumpCollection' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DataCollection'
+	    ValueName = 'LimitDumpCollection'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Toggle user control over Insider builds' is set to 'Disabled'
+	Registry 'AllowBuildPreview' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\PreviewBuilds'
+	    ValueName = 'AllowBuildPreview'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enable App Installer' is set to 'Disabled'
+	Registry 'EnableAppInstaller' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppInstaller'
+	    ValueName = 'EnableAppInstaller'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enable App Installer Experimental Features' is set to 'Disabled'
+	Registry 'EnableExperimentalFeatures' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppInstaller'
+	    ValueName = 'EnableExperimentalFeatures'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enable App Installer Hash Override' is set to 'Disabled'
+	Registry 'EnableHashOverride' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppInstaller'
+	    ValueName = 'EnableHashOverride'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Enable App Installer ms-appinstaller protocol' is set to 'Disabled'
+	Registry 'EnableMSAppInstallerProtocol' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppInstaller'
+	    ValueName = 'EnableMSAppInstallerProtocol'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off location' is set to 'Enabled'
+	Registry 'DisableLocation' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\LocationAndSensors'
+	    ValueName = 'DisableLocation'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Allow Message Service Cloud Sync' is set to 'Disabled'
+	Registry 'AllowMessageSync' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Messaging'
+	    ValueName = 'AllowMessageSync'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Block all consumer Microsoft account user authentication' is set to 'Enabled'
+	Registry 'DisableUserAuth' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\MicrosoftAccount'
+	    ValueName = 'DisableUserAuth'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off toast notifications on the lock screen' is set to 'Enabled'
+	Registry 'NoToastApplicationNotificationOnLockScreen' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\Windows\CurrentVersion\PushNotifications'
+	    ValueName = 'NoToastApplicationNotificationOnLockScreen'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off Help Experience Improvement Program' is set to 'Enabled'
+	Registry 'NoImplicitFeedback' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\Assistance\Client\1.0'
+	    ValueName = 'NoImplicitFeedback'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Do not preserve zone information in file attachments' is set to 'Disabled'
+	Registry 'SaveZoneInformation' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
+	    ValueName = 'SaveZoneInformation'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Notify antivirus programs when opening attachments' is set to 'Enabled'
+	Registry 'ScanWithAntiVirus' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Microsoft\Windows\CurrentVersion\Policies\Attachments'
+	    ValueName = 'ScanWithAntiVirus'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Configure Windows spotlight on lock screen' is set to 'Disabled'
+	Registry 'ConfigureWindowsSpotlight' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'ConfigureWindowsSpotlight'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Do not suggest third-party content in Windows spotlight' is set to 'Enabled'
+	Registry 'DisableThirdPartySuggestions' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'DisableThirdPartySuggestions'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Do not use diagnostic data for tailored experiences' is set to 'Enabled'
+	Registry 'DisableTailoredExperiencesWithDiagnosticData' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'DisableTailoredExperiencesWithDiagnosticData'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off all Windows spotlight features' is set to 'Enabled'
+	Registry 'DisableWindowsSpotlightFeatures' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'DisableWindowsSpotlightFeatures'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Turn off Spotlight collection on Desktop' is set to 'Enabled'
+	Registry 'DisableSpotlightCollectionOnDesktop' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\SOFTWARE\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'DisableSpotlightCollectionOnDesktop'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Prevent users from sharing files within their profile.' is set to 'Enabled'
+	Registry 'NoInplaceSharing' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer'
+	    ValueName = 'NoInplaceSharing'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	# CceId: 
+	# DataSource: Registry Policy
+	# Ensure 'Prevent Codec Download' is set to 'Enabled'
+	Registry 'PreventCodecDownload' {
+	    Ensure    = 'Present'
+	    Key       = 'HKU\[USER SID]\Software\Policies\Microsoft\WindowsMediaPlayer'
+	    ValueName = 'PreventCodecDownload'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
 	
     }
 }
