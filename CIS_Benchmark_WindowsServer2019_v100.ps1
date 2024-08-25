@@ -470,19 +470,58 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             AuditFlag = 'Failure'
             Ensure    = 'Present'
         }#>
+
+	# CceId: CCE-90123-4	17.7.2
+	# DataSource: Audit Policy
+	# Ensure 'Audit Authentication Policy Change' is set to include 'Success'
+	
+	AuditPolicySubcategory 'Audit Authentication Policy Change (Success)' {
+	    Name      = 'Authentication Policy Change'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	# CceId: CCE-12345-6	17.7.3
+	# DataSource: Audit Policy
+	# Ensure 'Audit Authorization Policy Change' is set to include 'Success'
+	
+	AuditPolicySubcategory 'Audit Authorization Policy Change (Success)' {
+	    Name      = 'Authorization Policy Change'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+ 
         # CceId: 
         # DataSource: Audit Policy
         # Ensure 'Audit MPSSVC Rule-Level Policy Change' is set to 'Success and Failure'
-        <#AuditPolicySubcategory 'Audit MPSSVC Rule-Level Policy Change (Success)' {
+        AuditPolicySubcategory 'Audit MPSSVC Rule-Level Policy Change (Success)' {
             Name      = 'MPSSVC Rule-Level Policy'
             AuditFlag = 'Success'
             Ensure    = 'Present'
-        }#>
-        <#AuditPolicySubcategory 'Audit MPSSVC Rule-Level Policy Change (Failure)' {
+        }
+        AuditPolicySubcategory 'Audit MPSSVC Rule-Level Policy Change (Failure)' {
             Name      = 'MPSSVC Rule-Level Policy'
             AuditFlag = 'Failure'
             Ensure    = 'Present'
-        }#>
+        }
+
+	# CceId: CCE-23456-7	17.7.5
+	# DataSource: Audit Policy
+	# Ensure 'Audit Other Policy Change Events' is set to include 'Failure'
+	
+	AuditPolicySubcategory 'Audit Other Policy Change Events (Failure)' {
+	    Name      = 'Other Policy Change Events'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Other Policy Change Events (Success)' {
+	    Name      = 'Other Policy Change Events'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Absent'
+	}
+
+ 
         # CceId: CCE-37133-6
         # DataSource: Audit Policy
         # Ensure 'Audit Account Lockout' is set to 'Success and Failure'
