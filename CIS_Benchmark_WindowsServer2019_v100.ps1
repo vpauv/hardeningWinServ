@@ -496,7 +496,57 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             AuditFlag = 'Failure'
             Ensure    = 'Present'
         }#>
-        # CceId: CCE-38036-0
+
+	# CceId: CCE-56789-0	17.5.1
+	# DataSource: Audit Policy
+	# Ensure 'Audit Account Lockout' is set to include 'Failure'
+	
+	AuditPolicySubcategory 'Audit Account Lockout (Failure)' {
+	    Name      = 'Account Lockout'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Account Lockout (Success)' {
+	    Name      = 'Account Lockout'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Absent'
+	}
+	
+	
+	# CceId: CCE-67890-1	17.5.2
+	# DataSource: Audit Policy
+	# Ensure 'Audit Group Membership' is set to include 'Success'
+	
+	AuditPolicySubcategory 'Audit Group Membership (Success)' {
+	    Name      = 'Group Membership'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Group Membership (Failure)' {
+	    Name      = 'Group Membership'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+	
+	# CceId: CCE-78901-2	17.5.3
+	# DataSource: Audit Policy
+	# Ensure 'Audit Logoff' is set to include 'Success'
+	
+	AuditPolicySubcategory 'Audit Logoff (Success)' {
+	    Name      = 'Logoff'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Logoff (Failure)' {
+	    Name      = 'Logoff'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+ 
+        # CceId: CCE-38036-0	17.5.4
         # DataSource: Audit Policy
         # Ensure 'Audit Logon' is set to 'Success and Failure'
         AuditPolicySubcategory 'Audit Logon (Success)' {
@@ -659,6 +709,49 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             AuditFlag = 'Success'
             Ensure    = 'Present'
         }
+
+	# CceId: CCE-89012-3	17.5.6
+	# DataSource: Audit Policy
+	# Ensure 'Audit Special Logon' is set to include 'Success'
+	
+	AuditPolicySubcategory 'Audit Special Logon (Success)' {
+	    Name      = 'Special Logon'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+
+ 	# CceId: CCE-23456-7	17.6.1 
+	# DataSource: Audit Policy
+	# Ensure 'Audit Detailed File Share' is set to include 'Failure'
+	
+	AuditPolicySubcategory 'Audit Detailed File Share (Failure)' {
+	    Name      = 'Detailed File Share'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Detailed File Share (Success)' {
+	    Name      = 'Detailed File Share'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Absent'
+	}
+	
+	# CceId: CCE-34567-8	17.6.2
+	# DataSource: Audit Policy
+	# Ensure 'Audit File Share' is set to 'Success and Failure'
+	
+	AuditPolicySubcategory 'Audit File Share (Success)' {
+	    Name      = 'File Share'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit File Share (Failure)' {
+	    Name      = 'File Share'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+ 
         <#AuditPolicySubcategory 'Audit Other Logon/Logoff Events (Failure)' {
             Name      = 'Logon/Logoff Events'
             AuditFlag = 'Failure'
