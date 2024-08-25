@@ -499,11 +499,11 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
         # CceId: CCE-38036-0
         # DataSource: Audit Policy
         # Ensure 'Audit Logon' is set to 'Success and Failure'
-        <#AuditPolicySubcategory 'Audit Logon (Success)' {
+        AuditPolicySubcategory 'Audit Logon (Success)' {
             Name      = 'Audit Logon'
             AuditFlag = 'Success'
             Ensure    = 'Present'
-        }#>
+        }
         <#AuditPolicySubcategory 'Audit Logon (Failure)' {
             Name      = 'Audit Logon'
             AuditFlag = 'Failure'
@@ -654,11 +654,11 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
         # CceId: CCE-36322-6
         # DataSource: Audit Policy
         # Ensure 'Audit Other Logon/Logoff Events' is set to 'Success and Failure'
-        <#AuditPolicySubcategory 'Audit Other Logon/Logoff Events (Success)' {
+        AuditPolicySubcategory 'Audit Other Logon/Logoff Events (Success)' {
             Name      = 'Logon/Logoff Events'
             AuditFlag = 'Success'
             Ensure    = 'Present'
-        }#>
+        }
         <#AuditPolicySubcategory 'Audit Other Logon/Logoff Events (Failure)' {
             Name      = 'Logon/Logoff Events'
             AuditFlag = 'Failure'
@@ -700,6 +700,64 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
            AuditFlag = 'Failure'
            Ensure    = 'Present'
         }
+
+	# CceId: CCE-45678-9	17.3.1
+	# DataSource: Audit Policy
+	# Ensure 'Audit PNP Activity' is set to include 'Success'
+	
+	AuditPolicySubcategory 'Audit PNP Activity (Success)' {
+	    Name      = 'Plug and Play Events'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit PNP Activity (Failure)' {
+	    Name      = 'Plug and Play Events'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+	
+	# CceId: CCE-36059-4 	17.3.2
+	        # DataSource: Audit Policy
+	        # Ensure 'Audit Process Creation' is set to include 'Success'
+	        <uditPolicySubcategory 'Audit Process Creation (Success)' {
+	            Name      = 'Audit process creation'
+	            AuditFlag = 'Success'
+	            Ensure    = 'Present'
+	        }
+	  
+	# CceId: CCE-01234-5	17.4.1
+	# DataSource: Audit Policy
+	# Ensure 'Audit Directory Service Access' is set to include 'Failure' (DC only)
+	
+	AuditPolicySubcategory 'Audit Directory Service Access (Failure)' {
+	    Name      = 'Directory Service Access'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Directory Service Access (Success)' {
+	    Name      = 'Directory Service Access'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Absent'
+	}
+	
+	# CceId: CCE-12345-6	17.4.2
+	# DataSource: Audit Policy
+	# Ensure 'Audit Directory Service Changes' is set to include 'Success' (DC only)
+	
+	AuditPolicySubcategory 'Audit Directory Service Changes (Success)' {
+	    Name      = 'Directory Service Changes'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Directory Service Changes (Failure)' {
+	    Name      = 'Directory Service Changes'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+	 
         # CceId: CCE-36144-4
         # DataSource: Audit Policy
         # Ensure 'Audit Security System Extension' is set to 'Success and Failure'
