@@ -522,6 +522,105 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
             AuditFlag = 'Failure'
             Ensure    = 'Present'
         }
+
+	# CceId: CCE-34567-8	17.1.2
+	# DataSource: Audit Policy
+	# Ensure 'Audit Kerberos Authentication Service' is set to 'Success and Failure' (DC Only)
+	
+	AuditPolicySubcategory 'Audit Kerberos Authentication Service (Success)' {
+	    Name      = 'Kerberos Authentication Service'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Kerberos Authentication Service (Failure)' {
+	    Name      = 'Kerberos Authentication Service'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+	
+	
+	# CceId: CCE-45678-9	17.1.3
+	# DataSource: Audit Policy
+	# Ensure 'Audit Kerberos Service Ticket Operations' is set to 'Success and Failure' (DC Only)
+	
+	AuditPolicySubcategory 'Audit Kerberos Service Ticket Operations (Success)' {
+	    Name      = 'Kerberos Service Ticket Operations'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Kerberos Service Ticket Operations (Failure)' {
+	    Name      = 'Kerberos Service Ticket Operations'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+
+ 	# CceId: CCE-56789-0	17.2.1 
+	# DataSource: Audit Policy
+	# Ensure 'Audit Application Group Management' is set to 'Success and Failure'
+	
+	AuditPolicySubcategory 'Audit Application Group Management (Success)' {
+	    Name      = 'Application Group Management'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Application Group Management (Failure)' {
+	    Name      = 'Application Group Management'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Present'
+	}
+	
+	# CceId: CCE-67890-1	17.2.2
+	# DataSource: Audit Policy
+	# Ensure 'Audit Computer Account Management' is set to include 'Success' (DC only)
+	
+	AuditPolicySubcategory 'Audit Computer Account Management (Success)' {
+	    Name      = 'Computer Account Management'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Computer Account Management (Failure)' {
+	    Name      = 'Computer Account Management'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+	
+	# CceId: CCE-78901-2	17.2.3
+	# DataSource: Audit Policy
+	# Ensure 'Audit Distribution Group Management' is set to include 'Success' (DC only)
+	
+	AuditPolicySubcategory 'Audit Distribution Group Management (Success)' {
+	    Name      = 'Distribution Group Management'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Distribution Group Management (Failure)' {
+	    Name      = 'Distribution Group Management'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+	
+	
+	 # CceId: CCE-89012-3	17.2.4
+	# DataSource: Audit Policy
+	# Ensure 'Audit Other Account Management Events' is set to include 'Success' (DC only)
+	
+	AuditPolicySubcategory 'Audit Other Account Management Events (Success)' {
+	    Name      = 'Other Account Management Events'
+	    AuditFlag = 'Success'
+	    Ensure    = 'Present'
+	}
+	
+	AuditPolicySubcategory 'Audit Other Account Management Events (Failure)' {
+	    Name      = 'Other Account Management Events'
+	    AuditFlag = 'Failure'
+	    Ensure    = 'Absent'
+	}
+  
         # CceId: CCE-37132-8
         # DataSource: Audit Policy
         # Ensure 'Audit System Integrity' is set to 'Success and Failure'
