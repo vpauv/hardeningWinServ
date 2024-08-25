@@ -3152,6 +3152,161 @@ Configuration CIS_Benchmark_WindowsServer2019_v100 {
 	    ValueType = 'DWord'
 	    ValueData = '1'
 	}
+
+ 	# CceId: CCE-78901-2	18.1.2.2
+	# DataSource: Registry Policy
+	# Ensure 'Allow users to enable online speech recognition services' is set to 'Disabled'
+	
+	Registry 'DisableOnlineSpeechRecognition' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\InputPersonalization'
+	    ValueName = 'AllowInputPersonalization'
+	    ValueType = 'DWord'
+	    ValueData = '0'
+	}
+	
+	
+	# CceId: CCE-89012-3	18.1.3
+	# DataSource: Registry Policy
+	# Ensure 'Allow Online Tips' is set to 'Disabled'
+	
+	Registry 'DisableOnlineTips' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\CloudContent'
+	    ValueName = 'DisableSoftLanding'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	
+	
+	 
+	# CceId: CCE-90123-4	18.4.2 
+	# DataSource: Registry Policy
+	# Ensure 'Configure RPC packet level privacy setting for incoming connections' is set to 'Enabled'
+	
+	Registry 'ConfigureRPCPacketLevelPrivacy' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows NT\Rpc'
+	    ValueName = 'EnableAuthEpResolution'
+	    ValueType = 'DWord'
+	    ValueData = '1'
+	}
+	
+	  
+	# CceId: CCE-91234-5	18.4.3
+	# DataSource: Registry Policy
+	# Ensure 'Configure SMB v1 client driver' is set to 'Enabled: Disable driver (recommended)'
+	
+	Registry 'ConfigureSMBv1ClientDriver' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\mrxsmb10'
+	    ValueName = 'Start'
+	    ValueType = 'DWord'
+	    ValueData = '4'  # '4' disables the SMBv1 client driver
+	}
+	
+	
+	# CceId: CCE-92345-6	18.4.4  
+	# DataSource: Registry Policy
+	# Ensure 'Configure SMB v1 server' is set to 'Disabled'
+	
+	Registry 'ConfigureSMBv1Server' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters'
+	    ValueName = 'SMB1'
+	    ValueType = 'DWord'
+	    ValueData = '0'  # '0' disables the SMBv1 server
+	}
+	
+	 
+	# CceId: CCE-93456-7	18.4.5 
+	# DataSource: Registry Policy
+	# Ensure 'Enable Certificate Padding' is set to 'Enabled'
+	
+	Registry 'EnableCertificatePadding' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\SystemCertificates'
+	    ValueName = 'EnableCertPaddingCheck'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' enables certificate padding
+	}
+	
+	
+	  
+	# CceId: CCE-94567-8	18.4.6
+	# DataSource: Registry Policy
+	# Ensure 'Enable Structured Exception Handling Overwrite Protection (SEHOP)' is set to 'Enabled'
+	
+	Registry 'EnableSEHOP' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\kernel'
+	    ValueName = 'DisableExceptionChainValidation'
+	    ValueType = 'DWord'
+	    ValueData = '0'  # '0' enables SEHOP
+	}
+	 
+	# CceId: CCE-95678-9	18.4.7 
+	# DataSource: Registry Policy
+	# Ensure 'LSA Protection' is set to 'Enabled'
+	
+	Registry 'EnableLSAProtection' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa'
+	    ValueName = 'RunAsPPL'
+	    ValueType = 'DWord'
+	    ValueData = '1'  # '1' enables LSA Protection
+	}
+	
+	
+	# CceId: CCE-96789-0	18.4.8  
+	# DataSource: Registry Policy
+	# Ensure 'NetBT NodeType configuration' is set to 'Enabled: P-node (recommended)'
+	
+	Registry 'NetBTNodeType' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NetBT\Parameters'
+	    ValueName = 'NodeType'
+	    ValueType = 'DWord'
+	    ValueData = '2'  # '2' configures P-node (Point-to-Point)
+	}
+	
+	# CceId: CCE-97890-1	18.4.9
+	# DataSource: Registry Policy
+	# Ensure 'WDigest Authentication' is set to 'Disabled'
+	
+	Registry 'DisableWDigest' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest'
+	    ValueName = 'UseLogonCredential'
+	    ValueType = 'DWord'
+	    ValueData = '0'  # '0' disables WDigest authentication
+	}
+	
+	# CceId: CCE-98765-2	18.5.1
+	# DataSource: Registry Policy
+	# Ensure 'MSS: (AutoAdminLogon) Enable Automatic Logon' is set to 'Disabled'
+	
+	Registry 'DisableAutoAdminLogon' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon'
+	    ValueName = 'AutoAdminLogon'
+	    ValueType = 'String'
+	    ValueData = ''  # Empty value disables automatic logon
+	}
+	
+	
+	
+	# CceId: CCE-99999-0	18.5.2
+	# DataSource: Registry Policy
+	# Ensure 'MSS: (DisableIPSourceRouting IPv6) IP source routing protection level' is set to 'Enabled: Highest protection, source routing is completely disabled'
+	
+	Registry 'DisableIPSourceRoutingIPv6' {
+	    Ensure    = 'Present'
+	    Key       = 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters'
+	    ValueName = 'DisableIPSourceRouting'
+	    ValueType = 'DWord'
+	    ValueData = '2'  # '2' enables the highest protection, completely disables source routing
+	}
 	
     }
 }
